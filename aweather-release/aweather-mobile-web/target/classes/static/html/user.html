@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aweather</title>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/mobile/webjars/bootstrap/3.4.1/css/bootstrap.css"/>
+
+    <!--需要引入JQuery -->
+    <script type="text/javascript" src="/mobile/webjars/jquery/3.4.1/jquery.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="/mobile/webjars/bootstrap/3.4.1/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="/mobile/webjars/vue/2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="/mobile/webjars/axios/0.19.0/dist/axios.js"></script>
+
+    <script type="text/javascript" src="/mobile/js/date.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="userDiv" class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/mobile/img/favicon.png" class="img-circle"><br>
+                <button class="btn btn-info">更换个人头像</button>
+                <button class="btn btn-success">编辑个人信息</button>
+                <a class="btn btn-warning" href="/mobile/html/pay.html" target="_blank" v-if="notVip">成为Aweather会员</a>
+                <a class="btn btn-warning" href="/mobile/html/pay.html" target="_blank" v-if="isVip">点我续费会员</a>
+            </div>
+            <div class="col-md-6">
+                <img src="/mobile/img/user_fan.gif" style="height:180px;">
+            </div>
+        </div>
+        <div class="row" style="height: 15px;"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <tr>
+                        <td>邮箱</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td>{{user.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>加入Aweather的时间</td>
+                        <td>{{user.created|formatDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>会员状态</td>
+                        <td>{{vip_time}}</td>
+                    </tr>
+                    <tr>
+                        <td>订阅的城市</td>
+                        <td>{{user.member}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">管理订阅(5/5)</h1>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>Cras justo odio</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Cras justo odio</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Cras justo odio</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Cras justo odio</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>Cras justo odio</td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-default">订阅当前地区</button>
+                                    <button class="btn btn-danger">取消订阅选中地区</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/mobile/js/user.js"></script>
+</html>

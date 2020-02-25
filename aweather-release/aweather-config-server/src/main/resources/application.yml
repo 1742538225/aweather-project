@@ -1,0 +1,21 @@
+server:
+  port: 8888		# 该服务的端口号
+
+spring:
+  application:
+    name: aweather-config-server
+
+  cloud:
+    config:
+      # 配置git仓库分支
+      label: master
+      server:
+        git:
+          uri: https://github.com/1742538225/aweather.git
+          # 仓库文件夹,如果有多重文件夹要配置该项,可配置多个
+#          search-paths:
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

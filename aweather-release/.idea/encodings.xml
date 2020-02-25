@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-api/aweather-city-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-api/aweather-pay-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-api/aweather-user-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-api/aweather-weather-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-city" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-eureka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-gateway-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-message" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-mobile-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-pay" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-pay-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-pay-server/aweather-pay" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-pay-server/aweather-pay-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-pay-server/aweather-pay-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-pay-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aweather-weather" charset="UTF-8" />
+  </component>
+</project>

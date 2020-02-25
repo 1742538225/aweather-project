@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/mobile/webjars/bootstrap/3.4.1/css/bootstrap.css"/>
+
+    <!--需要引入JQuery -->
+    <script type="text/javascript" src="/mobile/webjars/jquery/3.4.1/jquery.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="/mobile/webjars/bootstrap/3.4.1/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="/mobile/webjars/vue/2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="/mobile/webjars/axios/0.19.0/dist/axios.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        /*div{
+            border: red solid 1px;
+        }*/
+    </style>
+</head>
+
+<body>
+<div id="weatherDiv" class="container">
+    <div id="loadingDiv" class="row" style="display: block;position: fixed;z-index: 25;opacity: 0.9">
+        <img style="height: 570px;width:1000px;" src="/mobile/img/loading.gif" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+    </div>
+    <div class="row" style="height: 320px;">
+        <div class="row">
+            <h1 class="glyphicon glyphicon-time">
+                {{ date | formaDate }}
+                <button id="refreshButton" class="btn btn-default btn-lg" @click="refreshWeather" type="button" data-toggle="tooltip"
+                        data-placement="right">获取最新数据
+                </button>
+            </h1>
+        </div>
+        <div class="row" style="height: 20px;"></div>
+        <div class="row">
+            <div class="col-md-2" style="height: 130px;">
+                <img :src="wea_img" style="height: 75%;" oncontextmenu="return false" onselectstart="return false" ondragstart="return false"/>
+            </div>
+            <div class="col-md-2">
+                <font size="5">地区</font><br/>
+                <font size="5">{{cityZh}}</font>
+            </div>
+            <div class="col-md-3" style="background-color: lightgray;">
+                <font v-for="(weather, key, index) in weatherArray.slice(0, 1)" size="4"
+                      :key="index">天气:{{weather.wea}}</font><br/>
+                <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)" size="4" :key="index">当前温度:{{weather.tem}}</font><br/>
+                <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)" size="4" :key="index">风速:{{weather.win_speed}}</font><br/>
+                <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)" size="4" :key="index">湿度:{{weather.humidity}}</font><br/>
+            </div>
+            <div class="col-md-3" style="background-color: lightgray;">
+                <font v-for="(weather, key, index) in weatherArray.slice(0, 1)" size="4"
+                      :key="index">白天温度:{{weather.tem1}}</font><br/>
+                <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)" size="4" :key="index">夜晚温度:{{weather.tem2}}</font><br/>
+                <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)" size="4" :key="index">空气质量:{{weather.air_level}}</font><br/>
+                <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)"
+                      size="4">空气指数:{{weather.air}}</font>
+            </div>
+            <div class="col-md-2" style="background-color: lightgray;">
+                <font size="4" color="red">预警信息:无</font><br/>
+                <font size="4" color="red"></font><br/>
+                <font size="4" color="red"></font><br/>
+                <font size="4" color="red"></font><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div v-for="(hours, key, index) in hoursArray" class="col-md-1">
+                <h3>{{hours.day}}</h3>
+                <h4>{{hours.tem}}</h4>
+                <h4>{{hours.wea}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h3>Tips:</h3>
+                <div style="background-color: lightgrey">
+                    <font v-for="(weather,  key, index) in weatherArray.slice(0, 1)" face="微软雅黑" size="4">{{weather.air_tips}}</font>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 55px;"></div>
+    <div class="row">
+        <hr/>
+        <div class="row">
+            <div class="col-md-2">
+                <h1>未来6天</h1>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-2" v-for="(weather,  key, index) in weatherArray.slice(1, 7)">
+                    <img :src="getImgUrl(weather.wea_img)" oncontextmenu="return false" onselectstart="return false" ondragstart="return false"/><br/>
+                    <h4>{{weather.day}}</h4>
+                    <h4>{{weather.wea}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/mobile/js/weather.js"></script>
+</html>

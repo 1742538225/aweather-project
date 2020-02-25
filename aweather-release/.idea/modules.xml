@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/aweather-api/aweather-api.iml" filepath="$PROJECT_DIR$/aweather-api/aweather-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-city/aweather-city.iml" filepath="$PROJECT_DIR$/aweather-city/aweather-city.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-api/aweather-city-api/aweather-city-api.iml" filepath="$PROJECT_DIR$/aweather-api/aweather-city-api/aweather-city-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-common/aweather-common.iml" filepath="$PROJECT_DIR$/aweather-common/aweather-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-config-server/aweather-config-server.iml" filepath="$PROJECT_DIR$/aweather-config-server/aweather-config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-eureka-server/aweather-eureka-server.iml" filepath="$PROJECT_DIR$/aweather-eureka-server/aweather-eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-gateway-server/aweather-gateway-server.iml" filepath="$PROJECT_DIR$/aweather-gateway-server/aweather-gateway-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-message/aweather-message.iml" filepath="$PROJECT_DIR$/aweather-message/aweather-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-mobile-web/aweather-mobile-web.iml" filepath="$PROJECT_DIR$/aweather-mobile-web/aweather-mobile-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-pay/aweather-pay.iml" filepath="$PROJECT_DIR$/aweather-pay/aweather-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-api/aweather-pay-api/aweather-pay-api.iml" filepath="$PROJECT_DIR$/aweather-api/aweather-pay-api/aweather-pay-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-pay-web/aweather-pay-web.iml" filepath="$PROJECT_DIR$/aweather-pay-web/aweather-pay-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-release.iml" filepath="$PROJECT_DIR$/aweather-release.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-user/aweather-user.iml" filepath="$PROJECT_DIR$/aweather-user/aweather-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-api/aweather-user-api/aweather-user-api.iml" filepath="$PROJECT_DIR$/aweather-api/aweather-user-api/aweather-user-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-weather/aweather-weather.iml" filepath="$PROJECT_DIR$/aweather-weather/aweather-weather.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aweather-api/aweather-weather-api/aweather-weather-api.iml" filepath="$PROJECT_DIR$/aweather-api/aweather-weather-api/aweather-weather-api.iml" />
+    </modules>
+  </component>
+</project>

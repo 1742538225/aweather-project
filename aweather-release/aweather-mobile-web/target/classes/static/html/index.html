@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Aweather</title>
+    <link rel="icon" href="/mobile/img/favicon.ico" type="image/x-icon"/>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/mobile/webjars/bootstrap/3.4.1/css/bootstrap.css"/>
+
+    <!--需要引入JQuery -->
+    <script type="text/javascript" src="/mobile/webjars/jquery/3.4.1/jquery.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="/mobile/webjars/bootstrap/3.4.1/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="/mobile/webjars/vue/2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="/mobile/webjars/axios/0.19.0/dist/axios.js"></script>
+
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=iRdaSxOhZigAHz9XNdpPVGrHEdjyTrzP"></script>
+
+    <script type="text/javascript" src="/mobile/js/icode.js"></script>
+
+    <link rel="stylesheet" href="/mobile/css/aweather.css">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        /*div {
+            border: solid red 1px;
+        }*/
+    </style>
+</head>
+
+<body id="body"
+      style="background: url('/mobile/img/index_background_01.png');height:100%;width:100%;background-size:cover;">
+<!--<div id="locationLoading" class="divMiddle">-->
+<!--<img src="/mobile/img/location.gif" oncontextmenu="return false" onselectstart="return false"-->
+<!--ondragstart="return false">-->
+<!--</div>-->
+<div id="indexDiv" class="container" style="opacity: 0.9;">
+    <div id="alertDiv" class="alert alert-danger fade in" role="alert"
+         style="position: absolute;z-index:9999;width:20%;left:40%;top:35%;display: none;border: solid 2px black;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <span id="alertSpan"></span>
+    </div>
+    <div class="row" style="height: 45px;"></div>
+    <div class="panel panel-default" style="height: 148px;">
+        <div class="panel-body">
+            <div class="col-md-3">
+                <h1>当前地区</h1>
+                <span><font size="6" color="silver"
+                            class="glyphicon glyphicon-map-marker">{{location}}</font></span>
+            </div>
+            <div class="col-md-2" align="right">
+                <img src="/mobile/img/index_logo.gif" style="height: 118px;" oncontextmenu="return false"
+                     onselectstart="return false" ondragstart="return false"/>
+            </div>
+            <div class="col-md-5" align="left"><br/>
+                <font face="微软雅黑" size="8">Aweather</font>
+                <h4 align="center">--我的智能天气管家<span v-if="ifLogin">。欢迎您,{{user.name}}</span></h4>
+            </div>
+            <div class="col-md-2" align="right">
+                <a href="https://blog.csdn.net/weixin_43636289" target="_blank">
+                    <img src="/mobile/img/favicon.png" style="height: 100%;" oncontextmenu="return false"
+                         onselectstart="return false" ondragstart="return false"/>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" style="height: 630px;">
+        <div class="panel-body">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <iframe src="/mobile/html/home.html" style="height: 596px;width: 100%;" scrolling="no"></iframe>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <iframe src="/mobile/html/weather.html" style="height: 596px;width: 100%;"></iframe>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">233</div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+                    <iframe src="/mobile/html/user.html" style="height: 596px;width: 100%;" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body" style="height:57px ;">
+            <div class="col-md-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">首页</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">简报</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">详情</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">个人中心</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2" align="right">
+                <button id="locationButton" @click="getCity" type="button"
+                        class="btn btn-success glyphicon glyphicon-map-marker"> 定位当前城市
+                </button>
+            </div>
+            <div class="col-md-2">
+                <select v-model="selectProvince" @change="getCityByProvince" class="form-control">
+                    <option>-选择省份-</option>
+                    <option v-for="province in provinceArrray">{{province}}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select v-model="selectCity" @change="getLocation" class="form-control">
+                    <option>-选择地区-</option>
+                    <option v-for="city in cityArray">{{city}}</option>
+                </select>
+            </div>
+            <div class="col-md-2" align="right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-info" data-toggle="modal"
+                            data-target="#loginAndRegistModal">
+                        登录
+                    </button>
+                    <button type="button" class="btn btn-default">注销</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="opacity: 0.9;" align="center">
+        <h4><font color="white">Copyright ©2019 WuZhenghua</font></h4>
+    </div>
+</div>
+
+<!-- 登录与注册 begin -->
+<div id="loginAndRegistModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <component :is="'login'"></component>
+    </div>
+</div>
+<!-- 登录与注册 end -->
+
+<!-- 登录组件 begin -->
+<template id="login">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <h4 id="title" class="modal-title" id="myModalLabel">登录Aweather</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/mobile/img/index_logo.gif" style="height: 85px;" oncontextmenu="return false"
+                         onselectstart="return false" ondragstart="return false">
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-addon">邮箱</span>
+                        <input v-model="user.email" type="email" class="form-control" placeholder="Email"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">密码</span>
+                        <input v-model="user.password" type="password" class="form-control"
+                               placeholder="Password"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-md-9" id="forgetPwd">
+                        <div class="row" style="height: 8px;"></div>
+                        <a href="#">忘记登录密码?</a>
+                    </div>
+                    <div id="remember" class="input-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 记住密码
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div id="QQDiv" class="col-md-3">
+                <a href="/mobile/user/authorizeUrl.action"><img src="/mobile/img/QQ.jpg"
+                                                                style="height: 28px;"></a>
+            </div>
+            <span id="loginSpan"></span>
+            <button @click="doLogin()" type="button" class="btn btn-info">登录</button>
+            <button @click="comName = 'register'" type="button"
+                    class="btn btn-default glyphicon glyphicon-chevron-right" style="display: inline">新用户
+            </button>
+            </button>
+        </div>
+    </div>
+</template>
+<!-- 登录组件 end -->
+
+<!-- 注册组件 begin -->
+<template id="register">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <h4 id="registerTitle" class="modal-title" id="registerLabel">欢迎加入Aweather</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="/mobile/img/index_logo.gif" style="height: 85px;" oncontextmenu="return false"
+                     onselectstart="return false" ondragstart="return false">
+            </div>
+            <div class="col-md-8">
+                <div id="registerName" class="input-group" style="display: none;">
+                    <span class="input-group-addon">姓名</span>
+                    <input v-model="user.name" type="text" class="form-control" placeholder="Name"
+                           aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">邮箱</span>
+                    <input v-model="user.email" type="email" class="form-control" placeholder="Email"
+                           aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">密码</span>
+                    <input v-model="user.password" type="password" class="form-control"
+                           placeholder="Password"
+                           aria-describedby="basic-addon1">
+                </div>
+                <div id="confirmPswInput" class="input-group" style="display: none;">
+                    <span class="input-group-addon">确认密码</span>
+                    <input id="confirmPasswordInput" type="password" class="form-control"
+                           placeholder="ConfirmPassword"
+                           aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span id="loginAndRegistSpan"></span>
+        <button id="doLoginInput" @click="toLogin()" type="button"
+                class="btn btn-info glyphicon glyphicon-chevron-left">返回登录
+        </button>
+        </button>
+        <button id="doRegistInput" @click="doRegist" type="button" class="btn btn-success"
+                style="display: none">注册
+        </button>
+    </div>
+</template>
+<!-- 注册组件 end -->
+
+
+</body>
+
+<script type="text/javascript">
+    $('#drag').drag();
+</script>
+
+<script type="text/javascript" src="/mobile/js/index.js"></script>
+<script type="text/javascript" src="/mobile/js/loginAndRegist.js"></script>
+</html>

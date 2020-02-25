@@ -1,0 +1,33 @@
+server:
+  port: 8760
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: aweather-gateway-server
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: aweather-mobile-web
+        uri: lb://AWEATHER-MOBILE-WEB
+        predicates:
+        - Path=/mobile/**
+        filters:
+        - StripPrefix=1
+      - id: aweather-pay-web
+        uri: lb://AWEATHER-PAY-WEB
+        predicates:
+        - Path=/pay/**
+        filters:
+        - StripPrefix=1
+
+
+
+

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: aweather-weather
+
+server:
+  port: 8764
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

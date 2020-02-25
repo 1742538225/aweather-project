@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="aweather-city" />
+        <module name="aweather-city-api" />
+        <module name="aweather-common" />
+        <module name="aweather-config-server" />
+        <module name="aweather-eureka-server" />
+        <module name="aweather-gateway-server" />
+        <module name="aweather-message" />
+        <module name="aweather-mobile-web" />
+        <module name="aweather-pay" />
+        <module name="aweather-pay-api" />
+        <module name="aweather-pay-web" />
+        <module name="aweather-user" />
+        <module name="aweather-user-api" />
+        <module name="aweather-weather" />
+        <module name="aweather-weather-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="aweather-api" target="1.8" />
+      <module name="aweather-city" target="1.8" />
+      <module name="aweather-city-api" target="1.8" />
+      <module name="aweather-common" target="1.8" />
+      <module name="aweather-config-server" target="1.8" />
+      <module name="aweather-eureka-server" target="1.8" />
+      <module name="aweather-gateway-server" target="1.8" />
+      <module name="aweather-message" target="1.8" />
+      <module name="aweather-mobile-web" target="1.8" />
+      <module name="aweather-pay" target="1.8" />
+      <module name="aweather-pay-api" target="1.8" />
+      <module name="aweather-pay-server" target="1.8" />
+      <module name="aweather-pay-web" target="1.8" />
+      <module name="aweather-release" target="1.8" />
+      <module name="aweather-user" target="1.8" />
+      <module name="aweather-user-api" target="1.8" />
+      <module name="aweather-weather" target="1.8" />
+      <module name="aweather-weather-api" target="1.8" />
+      <module name="aweatherpayweb" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

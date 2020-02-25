@@ -1,0 +1,25 @@
+server:
+  port: 8766
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: aweather-message
+
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+    in-memory: true
+    pool:
+      enabled: false
+
+  mail:
+    username: 1742538225@qq.com
+    password: ymjgecmaajiehiig
+    host: smtp.qq.com
+    properties: {mail.smtp.ssl.enable: true}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Aweather-会员充值</title>
+    <link rel="icon" href="/mobile/img/favicon.ico" type="image/x-icon"/>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/mobile/webjars/bootstrap/3.4.1/css/bootstrap.css"/>
+
+    <!--需要引入JQuery -->
+    <script type="text/javascript" src="/mobile/webjars/jquery/3.4.1/jquery.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="/mobile/webjars/bootstrap/3.4.1/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="/mobile/webjars/vue/2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="/mobile/webjars/axios/0.19.0/dist/axios.js"></script>
+
+    <script type="text/javascript" src="/mobile/js/date.js"></script>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body id="body"
+      style="background: url('/mobile/img/index_background_01.png');height:100%;width:100%;background-size:cover;">
+<div id="payDiv" class="container" style="opacity: 0.9;">
+    <div class="row" style="height: 45px;"></div>
+    <div class="panel panel-default" style="height: 148px;">
+        <div class="panel-body">
+            <div class="col-md-3"></div>
+            <div class="col-md-2" align="right">
+                <img src="/mobile/img/index_logo.gif" style="height: 118px;" oncontextmenu="return false"
+                     onselectstart="return false" ondragstart="return false"/>
+            </div>
+            <div class="col-md-4" align="left"><br/>
+                <font face="微软雅黑" size="10">Aweather</font>
+                <h4 align="center">--我的智能天气管家</h4>
+            </div>
+            <div class="col-md-3" align="right">
+                <a href="https://blog.csdn.net/weixin_43636289" target="_blank">
+                    <img src="/mobile/img/favicon.png" style="height: 100%;" oncontextmenu="return false"
+                         onselectstart="return false" ondragstart="return false"/>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" style="height: 630px;">
+        <div class="panel-body">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" align="center">
+                <h1>欢迎用户 {{user.name}},您的会员时间剩余 {{vip_time}} 天</h1>
+                <button class="alert alert-success" style="width: 100%;"
+                        v-for="(vip,  key, index) in paymentObjectArray.slice(0, 1)" @click="toPayForVip(vip.price);">
+                    <h1>{{vip.name}} ￥{{vip.price*0.01}} {{vip.description}}</h1>
+                </button>
+                <button class="alert alert-info" style="width: 100%;"
+                        v-for="(vip,  key, index) in paymentObjectArray.slice(1, 2)" @click="toPayForVip(vip.price);">
+                    <h1>{{vip.name}} ￥{{vip.price*0.01}} {{vip.description}}</h1>
+                </button>
+                <button class="alert alert-danger" style="width: 100%;"
+                        v-for="(vip,  key, index) in paymentObjectArray.slice(2, 3)" @click="toPayForVip(vip.price);">
+                    <h1>{{vip.name}} ￥{{vip.price*0.01}} {{vip.description}}</h1>
+                </button>
+                <button  class="alert alert-warning" style="width: 100%;"
+                        v-for="(vip,  key, index) in paymentObjectArray.slice(3, 4)" @click="toPayForVip(vip.price);">
+                    <h1>{{vip.name}} ￥{{vip.price*0.01}} {{vip.description}}</h1>
+                </button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div style="opacity: 0.9;" align="center">
+        <h4><font color="white">Copyright ©2019 WuZhenghua</font></h4>
+    </div>
+
+    <form id="payForm" action="/pay/pay/payIndex.action" method="get">
+        <input name="token" type="hidden" v-model="payToken">
+    </form>
+</div>
+
+</body>
+<script type="text/javascript" src="/mobile/js/pay.js"></script>
+</html>

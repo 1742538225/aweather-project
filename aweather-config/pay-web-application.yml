@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: aweather-pay-web
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 8768
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        connect-timeout: 20000
+        read-timeout: 20000

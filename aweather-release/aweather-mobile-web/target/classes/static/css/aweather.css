@@ -1,0 +1,16 @@
+.divMiddle{     /*让div居于屏幕中间*/
+    text-align: center;
+    border-radius: 20px;
+    /*width: 300px;*/
+    /*height: 350px;*/
+    margin: auto;
+    position: fixed;
+    top: 10%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 25;
+    opacity: 0.7;
+    display: none;
+}

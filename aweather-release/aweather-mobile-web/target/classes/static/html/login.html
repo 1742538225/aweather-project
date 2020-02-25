@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="icon" href="" type="image/x-icon" />
+
+
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="/webjars/bootstrap/3.4.1/css/bootstrap.css" />
+
+		<!--需要引入JQuery -->
+		<script type="text/javascript" src="/webjars/jquery/1.11.3/jquery.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script type="text/javascript" src="/webjars/bootstrap/3.4.1/js/bootstrap.js"></script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+			/* div {
+	border: 1px solid red;
+} */
+		</style>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#frontdiv').delay(1000).fadeOut(1500);
+			});
+		</script>
+	</head>
+
+	<body style="background: url('static/imgimg/login_background.png');height:100%;width:100%;overflow: hidden;background-size:cover;">
+		<div id="frontdiv" style="position: absolute;z-index:100;background-color: white;width:100%;height:100%;" align="center">
+			<img src="img/favicon.png" style="height:200px;margin-top:18%;">
+			<h1>正华出品</h1> Copyright ©2019 WuZhenghua
+		</div>
+
+		<div class="container">
+			<div class="row hidden-xs" style="height:250px"></div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="col-md-3 hidden-xs">
+						<img src="img/favicon.png" />
+					</div>
+					<div class="col-md-9">
+						<h1>
+						<b><font color="white"> 欢迎使用<br> <br>智能天气服务平台</font>
+						</b>
+					</h1>
+					</div>
+				</div>
+				<div class="col-md-4" style="opacity:0.8;">
+					<div class="panel panel-default row">
+						<div class="panel-heading">
+							<h3 class="panel-title">Welcome You</h3>
+						</div>
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-md-4">
+											<button class="btn btn-info" data-toggle="modal" data-target="#loginModal">Sign In</button>
+										</div>
+										<div class="col-md-8 hidden-xs" align="right">
+											<font size="5" class="glyphicon glyphicon-user"> 登录天气系统</font>
+										</div>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-md-4">
+											<button class="btn btn-danger" data-toggle="modal" data-target="#registModal">Sign Up</button>
+										</div>
+										<div class="col-md-8 hidden-xs" align="right">
+											<font size="5" class="glyphicon glyphicon-hand-up"> 注册天气系统</font>
+										</div>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-md-4">
+											<button class="btn btn-success" data-toggle="modal" data-target="#aboutmodal">About</button>
+										</div>
+										<div class="col-md-8 hidden-xs" align="right">
+											<font size="5" class="glyphicon glyphicon-info-sign">
+												关于天气系统</font>
+										</div>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-md-4">
+											<button class="btn btn-default" data-toggle="modal" data-target="#contactmodal">Contact</button>
+										</div>
+										<div class="col-md-8 hidden-xs" align="right">
+											<font size="5" class="glyphicon glyphicon-earphone">
+												联系开发人员</font>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="panel-footer" align="center">
+							<font color="black">Copyright ©2019 WuZhenghua</font>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- 登录窗口 -->
+			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:180px;">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+							<h4 class="modal-title" id="myModalLabel">
+							<font class="glyphicon glyphicon-user"> 登录系统</font>
+						</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row" style="height: 60px;" align="center">
+								<h1>
+								<b>智能天气服务平台</b>
+							</h1>
+							</div>
+							<div class="row" align="center">
+								<img src="img/favicon.png" />
+							</div>
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-6">
+									<form action="" method="post">
+										<div class="input-group">
+											<span class="input-group-addon" id="basic-addon1"><b>账号</b>
+										</span> <input onblur="checkUserId()" type="text" class="form-control" placeholder="账号" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon" id="basic-addon1"><b>密码</b>
+										</span> <input type="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+										</div>
+									</form>
+								</div>
+								<div class="col-md-3">
+									<span id="usernamespan"></span>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-info">Sign in</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 登录窗口 -->
+
+			<!-- 注册窗口 -->
+			<div class="modal fade" id="registModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:180px;">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+							<h4 class="modal-title" id="myModalLabel">
+							<font class="glyphicon glyphicon-hand-up"> 注册系统</font>
+						</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row" style="height: 60px;" align="center">
+								<h1>
+								<b>智能天气服务平台</b>
+							</h1>
+							</div>
+							<div class="row" align="center">
+								<img src="img/favicon.png" />
+							</div>
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									<form action="" method="post">
+										<div class="input-group">
+											<span class="input-group-addon" id="basic-addon1"><b>账号</b></span>
+											<input type="text" class="form-control" placeholder="账号" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon" id="basic-addon1"><b>邮箱</b></span>
+											<input type="email" class="form-control" placeholder="邮箱" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon" id="basic-addon1"><b>密码</b></span>
+											<input type="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon" id="basic-addon1"><b>确认密码</b></span>
+											<input type="password" class="form-control" placeholder="确认密码" aria-describedby="basic-addon1">
+										</div>
+									</form>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<span id="registSpan">
+								<font class="glyphicon glyphicon-remove" color="red">请填写用户名</font>
+							</span>
+							<button class="btn btn-danger">Sign up</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 注册窗口 -->
+
+			<!-- 关于教务系统 -->
+			<div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:180px;">
+				<div class="modal-dialog" role="document" style="width:500px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+							<h4 class="modal-title" id="myModalLabel">
+							<font class="glyphicon glyphicon-info-sign"> 关于该系统</font>
+						</h4>
+						</div>
+						<div class="modal-body" align="center">
+							<h4>该系统的雏形大致根据以下论文提供的方向设计</h4>
+							<div class="col-md-6">
+								<a href="${pageContext.request.contextPath}/img/AboutSams01.png" target="_Blank"><img src="${pageContext.request.contextPath}/img/AboutSams01.png" style="width:100%;" /> </a>
+							</div>
+							<div class="col-md-6">
+								<a href="${pageContext.request.contextPath}/img/AboutSams02.png" target="_Blank"> <img src="${pageContext.request.contextPath}/img/AboutSams02.png" style="width:100%;" />
+								</a>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 联系开发人员 -->
+			<div class="modal fade" id="contactmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:180px;">
+				<div class="modal-dialog" role="document" style="width:250px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+							<h4 class="modal-title" id="myModalLabel">
+							<font class="glyphicon glyphicon-earphone"> 联系我</font>
+						</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row" align="center">
+								<img src="img/contact.png" style="width:200px;" />
+							</div>
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-info" href="https://blog.csdn.net/weixin_43636289" target="view_window">进入个人CSDN博客</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
